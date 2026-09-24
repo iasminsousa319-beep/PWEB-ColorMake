@@ -1,0 +1,11 @@
+{
+    "name": "pweb-colormake",
+    "version": "1.0.0",
+    "description": "Projeto ColorMake - Teoria das cores e maquiagem",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "",
+    "license": "ISC"
+}
