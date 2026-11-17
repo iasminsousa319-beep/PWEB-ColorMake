@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade | ColorMake</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>ColorMake</h1>
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="/comunidade">Comunidade</a>
+        </nav>
+    </header>
+
+    <main class="community-page">
+
+        <section class="community">
+
+            <h2>Comunidade ColorMake</h2>
+
+            <p>
+                Compartilhe suas maquiagens, peça opiniões,
+                troque dicas e inspire outras pessoas!
+            </p>
+
+            <form action="/publicacoes"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  class="post-form">
+
+                <label for="nomeUsuario">Seu nome</label>
+                <input
+                    type="text"
+                    id="nomeUsuario"
+                    name="nomeUsuario"
+                    maxlength="40"
+                    required
+                    placeholder="Como deseja aparecer?"
+                >
+
+                <label for="legenda">Conte sobre sua maquiagem</label>
+                <textarea
+                    id="legenda"
+                    name="legenda"
+                    maxlength="500"
+                    required
+                    placeholder="Quais produtos usou? Tem alguma dúvida?"
+                ></textarea>
+
+                <label for="foto">Escolha sua foto</label>
+                <input
+                    type="file"
+                    id="foto"
+                    name="foto"
+                    accept="image/jpeg,image/png,image/webp"
+                    required
+                >
+
+                <button type="submit">Publicar maquiagem</button>
+
+            </form>
+
+        </section>
+
+        <section class="community-posts">
+
+            <h2>Maquiagens da comunidade</h2>
+
+            <div class="posts">
+
+                <% if (publicacoes && publicacoes.length > 0) { %>
+
+                    <% publicacoes.forEach(publicacao => { %>
+
+                        <article class="post-card">
+
+                            <h3><%= publicacao.nomeUsuario %></h3>
+
+                            <img
+                                src="<%= publicacao.imagem %>"
+                                alt="Maquiagem publicada"
+                            >
+
+                            <p><%= publicacao.legenda %></p>
+
+                            <small>
+                                <%= new Date(publicacao.dataCriacao).toLocaleDateString("pt-BR") %>
+                            </small>
+<a href="/publicacoes/<%= publicacao._id %>" class="view-post-button">
+    Ver publicação e comentar →
+</a>
+                        </article>
+
+                    <% }) %>
+
+                <% } else { %>
+
+                    <p>Ainda não existem publicações. Seja a primeira!</p>
+
+                <% } %>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
