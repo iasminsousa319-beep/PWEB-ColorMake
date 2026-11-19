@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | ColorMake</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <main class="community">
+
+        <h2>Bem-vinda ao ColorMake!</h2>
+
+        <p>Entre na sua conta para participar da comunidade.</p>
+
+        <form action="/login" method="POST" class="post-form">
+
+            <label for="email">E-mail</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Seu e-mail"
+            >
+
+            <label for="senha">Senha</label>
+            <input
+                type="password"
+                id="senha"
+                name="senha"
+                required
+                placeholder="Sua senha"
+            >
+
+            <button type="submit">Entrar</button>
+
+        </form>
+
+        <p>
+            Ainda não possui uma conta?
+            <a href="/cadastro">Cadastre-se</a>
+        </p>
+
+    </main>
+
+</body>
+</html>

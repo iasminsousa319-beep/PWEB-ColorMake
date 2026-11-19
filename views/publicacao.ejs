@@ -16,6 +16,16 @@
         <nav>
             <a href="/">Início</a>
             <a href="/comunidade">Comunidade</a>
+
+            <% if (usuario) { %>
+                <span>Olá, <%= usuario.nome %>!</span>
+                <form action="/logout" method="POST">
+                    <button type="submit">Sair</button>
+                </form>
+            <% } else { %>
+                <a href="/login">Entrar</a>
+                <a href="/cadastro">Cadastrar</a>
+            <% } %>
         </nav>
     </header>
 
@@ -35,9 +45,6 @@
             <small>
                 <%= new Date(publicacao.dataCriacao).toLocaleDateString("pt-BR") %>
             </small>
-            <a href="/publicacoes/<%= publicacao._id %>" class="view-post-button">
-    Ver publicação e comentar →
-</a>
 
         </article>
 
@@ -50,34 +57,35 @@
                 sugestão ou opinião!
             </p>
 
-            <form action="/publicacoes/<%= publicacao._id %>/comentarios"
-                  method="POST"
-                  class="post-form">
+            <% if (usuario) { %>
 
-                <label for="nomeUsuario">Seu nome</label>
+                <form action="/publicacoes/<%= publicacao._id %>/comentarios"
+                      method="POST"
+                      class="post-form">
 
-                <input
-                    type="text"
-                    id="nomeUsuario"
-                    name="nomeUsuario"
-                    maxlength="40"
-                    required
-                    placeholder="Como deseja aparecer?"
-                >
+                    <label for="texto">Seu comentário</label>
 
-                <label for="texto">Seu comentário</label>
+                    <textarea
+                        id="texto"
+                        name="texto"
+                        maxlength="500"
+                        required
+                        placeholder="Deixe sua dica ou opinião..."
+                    ></textarea>
 
-                <textarea
-                    id="texto"
-                    name="texto"
-                    maxlength="500"
-                    required
-                    placeholder="Deixe sua dica ou opinião..."
-                ></textarea>
+                    <button type="submit">Enviar comentário</button>
 
-                <button type="submit">Enviar comentário</button>
+                </form>
 
-            </form>
+            <% } else { %>
+
+                <p>
+                    Para comentar, faça
+                    <a href="/login">login</a>
+                    ou <a href="/cadastro">crie sua conta</a>.
+                </p>
+
+            <% } %>
 
             <h3>O que estão dizendo</h3>
 

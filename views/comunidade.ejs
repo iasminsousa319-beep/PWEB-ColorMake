@@ -1,116 +1,40 @@
+<% if (usuario) { %>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade | ColorMake</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <form action="/publicacoes"
+          method="POST"
+          enctype="multipart/form-data"
+          class="post-form">
 
-<body>
+        <label for="legenda">Conte sobre sua maquiagem</label>
 
-    <header>
-        <h1>ColorMake</h1>
+        <textarea
+            id="legenda"
+            name="legenda"
+            maxlength="500"
+            required
+            placeholder="Quais produtos usou? Tem alguma dúvida?"
+        ></textarea>
 
-        <nav>
-            <a href="/">Início</a>
-            <a href="/comunidade">Comunidade</a>
-        </nav>
-    </header>
+        <label for="foto">Escolha sua foto</label>
 
-    <main class="community-page">
+        <input
+            type="file"
+            id="foto"
+            name="foto"
+            accept="image/jpeg,image/png,image/webp"
+            required
+        >
 
-        <section class="community">
+        <button type="submit">Publicar maquiagem</button>
 
-            <h2>Comunidade ColorMake</h2>
+    </form>
 
-            <p>
-                Compartilhe suas maquiagens, peça opiniões,
-                troque dicas e inspire outras pessoas!
-            </p>
+<% } else { %>
 
-            <form action="/publicacoes"
-                  method="POST"
-                  enctype="multipart/form-data"
-                  class="post-form">
+    <p>
+        Para publicar sua maquiagem,
+        <a href="/login">entre na sua conta</a>
+        ou <a href="/cadastro">cadastre-se</a>.
+    </p>
 
-                <label for="nomeUsuario">Seu nome</label>
-                <input
-                    type="text"
-                    id="nomeUsuario"
-                    name="nomeUsuario"
-                    maxlength="40"
-                    required
-                    placeholder="Como deseja aparecer?"
-                >
-
-                <label for="legenda">Conte sobre sua maquiagem</label>
-                <textarea
-                    id="legenda"
-                    name="legenda"
-                    maxlength="500"
-                    required
-                    placeholder="Quais produtos usou? Tem alguma dúvida?"
-                ></textarea>
-
-                <label for="foto">Escolha sua foto</label>
-                <input
-                    type="file"
-                    id="foto"
-                    name="foto"
-                    accept="image/jpeg,image/png,image/webp"
-                    required
-                >
-
-                <button type="submit">Publicar maquiagem</button>
-
-            </form>
-
-        </section>
-
-        <section class="community-posts">
-
-            <h2>Maquiagens da comunidade</h2>
-
-            <div class="posts">
-
-                <% if (publicacoes && publicacoes.length > 0) { %>
-
-                    <% publicacoes.forEach(publicacao => { %>
-
-                        <article class="post-card">
-
-                            <h3><%= publicacao.nomeUsuario %></h3>
-
-                            <img
-                                src="<%= publicacao.imagem %>"
-                                alt="Maquiagem publicada"
-                            >
-
-                            <p><%= publicacao.legenda %></p>
-
-                            <small>
-                                <%= new Date(publicacao.dataCriacao).toLocaleDateString("pt-BR") %>
-                            </small>
-<a href="/publicacoes/<%= publicacao._id %>" class="view-post-button">
-    Ver publicação e comentar →
-</a>
-                        </article>
-
-                    <% }) %>
-
-                <% } else { %>
-
-                    <p>Ainda não existem publicações. Seja a primeira!</p>
-
-                <% } %>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</body>
-</html>
+<% } %>

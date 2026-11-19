@@ -839,3 +839,100 @@ footer {
         padding: 20px;
     }
 }
+
+/* PÁGINA INDIVIDUAL DA PUBLICAÇÃO */
+
+.publication-page {
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.publication-page > .post-card {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.publication-page .post-card img {
+    max-height: 500px;
+    object-fit: contain;
+    margin: 15px 0;
+}
+.comments-section {
+    max-width: 650px;
+    margin: 45px auto;
+    padding: 30px;
+    background: #211e1e;
+    border: 1px solid #383333;
+    border-radius: 15px;
+}
+
+.comments-section h2 {
+    text-align: center;
+    color: #e9a393;
+    margin-bottom: 12px;
+}
+
+.comments-section > p {
+    text-align: center;
+    color: #bdb5b5;
+    margin-bottom: 30px;
+}
+
+.comments-section .post-form {
+    max-width: 100%;
+}
+
+.comments-section .post-form input,
+.comments-section .post-form textarea {
+    box-sizing: border-box;
+}
+
+.comments-section .post-form button {
+    background: #e9a393;
+    color: #171515;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.comments-section h3 {
+    color: #e9a393;
+    margin: 40px 0 20px;
+}
+
+.comment-card {
+    background: #171515;
+    border: 1px solid #383333;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.comment-card strong {
+    color: #e9a393;
+}
+
+.comment-card p {
+    color: #f5eeee;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+.comment-card small {
+    color: #8f8989;
+}
+
+@media (max-width: 600px) {
+    .publication-page {
+        margin: 25px auto;
+        padding: 12px;
+    }
+
+    .comments-section {
+        padding: 20px;
+    }
+}
